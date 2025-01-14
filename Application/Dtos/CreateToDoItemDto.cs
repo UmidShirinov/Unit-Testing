@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Dtos
 {
-	public class CreateToDoDto
+	public class CreateToDoItemDto
 	{
 		public string? Title { get; set; }
 	}
