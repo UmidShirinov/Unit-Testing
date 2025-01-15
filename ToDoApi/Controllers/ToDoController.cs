@@ -22,7 +22,17 @@ namespace ToDoApi.Controllers
 		public IActionResult GetAll() => Ok(_toDoItemService.GetAll());
 
 		[HttpGet("{id}")]
-		public IActionResult GetById(int id) => Ok(_toDoItemService.GetById(id));
+		public IActionResult GetById(int id)
+		{
+			var result = _toDoItemService.GetById(id);
+			if (result is null)
+			{
+				return NotFound();
+			}
+
+
+			return Ok(result);
+		}
 
 		[HttpPost]
 		public IActionResult Create(CreateToDoItemDto dto)

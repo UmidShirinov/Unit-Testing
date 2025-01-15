@@ -32,10 +32,20 @@ namespace ToDoApi.UnitTest
 			//Assert
 			var objectResult = Assert.IsType<ObjectResult>(result);
 			Assert.Equal(201, objectResult.StatusCode);
-			Assert.Equal(createdItem,objectResult.Value);
+			Assert.Equal(createdItem, objectResult.Value);
 		}
 
-		
+
+		[Fact]
+		public void GetById_ShouldReturnNotFound()
+		{
+			_mockService.Setup(x => x.GetById(1)).Returns((ToDoItem)null);
+
+			var result = _toDoController.GetById(1);
+
+			Assert.IsType<NotFoundResult>(result);
+
+		}
 	}
 }
 
