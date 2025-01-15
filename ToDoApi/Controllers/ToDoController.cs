@@ -29,7 +29,7 @@ namespace ToDoApi.Controllers
 		{
 			var newItem = _toDoItemService.Add(dto);
 
-			return CreatedAtAction(nameof(GetById), new { Id = newItem.Id }, newItem);
+			return StatusCode(201, newItem);
 		}
 
 		[HttpDelete("{id}")]
